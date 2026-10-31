@@ -1,0 +1,1 @@
+Place uploaded files in the Tomcat campusly-storage directory, not in this web folder.
