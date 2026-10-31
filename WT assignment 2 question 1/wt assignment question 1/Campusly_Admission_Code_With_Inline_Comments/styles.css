@@ -1,0 +1,531 @@
+* {
+  box-sizing:border-box;
+}
+/* Theme colors used throughout the page */
+:root {
+  --ink:#1b3026;
+  --green:#174d3b;
+  --sage:#79a987;
+  --muted:#819087;
+  --line:#e4ebe5;
+  --coral:#c45b4c;
+}
+/* Base page layout and typography */
+body {
+  margin:0;
+  min-height:100vh;
+  background:#fafcf8;
+  color:var(--ink);
+  font-family:"DM Sans",sans-serif;
+}
+/* Soft decorative background shape */
+body:before {
+  content:"";
+  position:fixed;
+  z-index:-1;
+  width:520px;
+  height:520px;
+  right:-190px;
+  top:-250px;
+  border-radius:50%;
+  background:radial-gradient(circle,#e4f1df,transparent 70%);
+}
+/* Header and brand styling */
+.topbar {
+  height:76px;
+  padding:0 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #e8eee8;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  text-decoration:none;
+  color:var(--green);
+  font:800 13px Manrope,sans-serif;
+  letter-spacing:1.2px;
+}
+.brand-mark {
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:9px 9px 9px 2px;
+  background:var(--green);
+  color:#c9ef83;
+  font-size:17px;
+}
+.brand-light {
+  color:#8d9a91;
+  font-weight:500;
+}
+.portal-tag {
+  font-size:9px;
+  letter-spacing:1.3px;
+  color:#7c8981;
+  font-weight:700;
+}
+.portal-tag i {
+  display:inline-block;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#7fbd78;
+  margin-right:7px;
+}
+/* Main two-column layout */
+.layout {
+  width:min(1100px,88%);
+  margin:68px auto 80px;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:clamp(40px,7vw,95px);
+  align-items:start;
+}
+/* Introductory text section */
+.intro {
+  padding-top:46px;
+  position:sticky;
+  top:30px;
+}
+.eyebrow,.kicker {
+  font-size:10px;
+  letter-spacing:1.7px;
+  font-weight:700;
+  color:#688575;
+}
+h1 {
+  font:800 clamp(46px,5.3vw,70px)/1.05 Manrope,sans-serif;
+  letter-spacing:-3.8px;
+  margin:22px 0 18px;
+}
+h1 span {
+  color:#75a080;
+}
+.intro-copy {
+  max-width:350px;
+  color:#7b8980;
+  font-size:14px;
+  line-height:1.9;
+}
+.note {
+  display:flex;
+  gap:13px;
+  align-items:center;
+  margin-top:50px;
+  color:#40574a;
+  font-size:12px;
+}
+.note>span {
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border:1px solid #d9e8dc;
+  border-radius:50%;
+  color:#699878;
+  font-size:17px;
+}
+.note small {
+  display:block;
+  color:#89968d;
+  margin-top:4px;
+  font-size:10px;
+}
+/* Registration form container */
+.form-card {
+  padding:clamp(25px,4vw,43px);
+  background:#fff;
+  border:1px solid #e9eee8;
+  border-radius:18px;
+  box-shadow:0 24px 80px #1f3e2f12;
+}
+.card-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.kicker {
+  font-size:9px;
+  margin:0 0 8px;
+}
+h2 {
+  font:700 25px Manrope,sans-serif;
+  letter-spacing:-.7px;
+  margin:0;
+}
+.step {
+  padding:8px 11px;
+  border-radius:8px;
+  background:#f1f6ef;
+  color:var(--green);
+  font-size:10px;
+  font-weight:700;
+}
+.step small {
+  color:#9aaa9e;
+}
+/* Form completion progress indicator */
+.progress {
+  height:3px;
+  margin-top:23px;
+  background:#edf1ec;
+  border-radius:8px;
+  overflow:hidden;
+}
+.progress span {
+  display:block;
+  width:0;
+  height:100%;
+  background:#79a987;
+  transition:width .2s;
+}
+.required-note {
+  margin:12px 0 27px;
+  color:#98a39b;
+  font-size:10px;
+}
+.required-note b,.field label b,.declaration b {
+  color:var(--coral);
+}
+/* Headings for each form section */
+.section-title {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0 0 17px;
+}
+.section-title>span {
+  color:#7da48a;
+  font:700 10px Manrope;
+}
+.section-title h3 {
+  margin:0;
+  color:#3a5144;
+  font:700 12px Manrope;
+}
+.section-title i {
+  height:1px;
+  flex:1;
+  background:#edf1ec;
+}
+/* Form fields, labels and input appearance */
+.field {
+  min-width:0;
+  margin-bottom:16px;
+}
+.field.full {
+  width:100%;
+}
+.field label:not(.upload) {
+  display:block;
+  margin:0 0 8px;
+  color:#4b5e52;
+  font-size:10px;
+  font-weight:700;
+}
+.input-shell {
+  height:46px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:0 12px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fcfdfb;
+  transition:.2s;
+}
+.input-shell:focus-within {
+  border-color:#82ad8d;
+  box-shadow:0 0 0 3px #82ad8d20;
+  background:white;
+}
+.input-shell>span {
+  width:15px;
+  color:#87a18e;
+  text-align:center;
+}
+input,select {
+  width:100%;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#2b4034;
+  font:12px "DM Sans",sans-serif;
+}
+input::placeholder {
+  color:#b4beb7;
+}
+select {
+  color:#849188;
+  cursor:pointer;
+}
+.input-shell button {
+  border:0;
+  background:none;
+  color:#789581;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.8px;
+  cursor:pointer;
+}
+/* Places two fields side by side on wider screens */
+.two-col {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+/* Validation messages and field states */
+.error {
+  display:block;
+  min-height:0;
+  margin-top:5px;
+  color:var(--coral);
+  font-size:10px;
+  line-height:1.4;
+}
+.field.invalid .input-shell {
+  border-color:#d98b7d;
+  background:#fffaf9;
+}
+.field.valid .input-shell {
+  border-color:#9bc4a2;
+}
+/* Password strength indicator */
+.strength {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:9px;
+  color:#9aa69e;
+  font-size:9px;
+}
+.strength-bars {
+  display:flex;
+  gap:3px;
+}
+.strength-bars i {
+  width:27px;
+  height:3px;
+  border-radius:4px;
+  background:#e9eee9;
+}
+.strength-bars[data-level="1"] i:nth-child(-n+1) {
+  background:#d97862;
+}
+.strength-bars[data-level="2"] i:nth-child(-n+2) {
+  background:#e1b65d;
+}
+.strength-bars[data-level="3"] i:nth-child(-n+3) {
+  background:#9ebd71;
+}
+.strength-bars[data-level="4"] i {
+  background:#62a477;
+}
+.helper {
+  display:block;
+  margin-top:5px;
+  color:#9aa69e;
+  font-size:9px;
+}
+/* File upload drop area */
+.upload {
+  min-height:112px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  border:1px dashed #cbd9ce;
+  border-radius:9px;
+  background:#fbfdf9;
+  cursor:pointer;
+  text-align:center;
+}
+.upload:hover,.upload.dragover {
+  border-color:#7ba889;
+  background:#f3faf2;
+}
+.upload input {
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+.upload-icon {
+  width:27px;
+  height:27px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:#eaf4e9;
+  color:#608c6c;
+  font-size:17px;
+}
+.upload strong {
+  color:#64766a;
+  font-size:10px;
+  font-weight:500;
+}
+.upload em {
+  color:#39744f;
+  font-style:normal;
+  font-weight:700;
+}
+.upload small {
+  color:#a0aca3;
+  font-size:9px;
+}
+/* Confirmation checkbox */
+.declaration {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:23px;
+  color:#7c8980;
+  font-size:10px;
+  line-height:1.6;
+  cursor:pointer;
+}
+.declaration input {
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+.checkmark {
+  flex:0 0 15px;
+  height:15px;
+  border:1px solid #cbd8cd;
+  border-radius:4px;
+  background:white;
+}
+.declaration input:checked+.checkmark {
+  background:var(--green);
+  border-color:var(--green);
+}
+.declaration input:checked+.checkmark:after {
+  content:"✓";
+  display:block;
+  color:white;
+  text-align:center;
+  font-size:10px;
+  line-height:14px;
+}
+/* Submit button and hover effect */
+.submit {
+  width:100%;
+  min-height:49px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:22px;
+  padding:0 17px 0 20px;
+  border:0;
+  border-radius:8px;
+  background:var(--green);
+  color:white;
+  font:700 11px Manrope;
+  cursor:pointer;
+  transition:.2s;
+}
+.submit:hover {
+  background:#226348;
+  transform:translateY(-1px);
+}
+.arrow {
+  width:27px;
+  height:27px;
+  display:grid;
+  place-items:center;
+  border-radius:6px;
+  background:#ffffff20;
+  font-size:15px;
+}
+.privacy {
+  text-align:center;
+  color:#a0aaa2;
+  font-size:9px;
+  margin:11px 0 0;
+}
+/* Message displayed after successful client-side validation */
+.success {
+  margin-top:15px;
+  padding:13px 15px;
+  border-radius:8px;
+  background:#edf7ed;
+  color:#356b47;
+  font-size:11px;
+  line-height:1.6;
+}
+footer {
+  display:flex;
+  justify-content:space-between;
+  padding:22px 7%;
+  border-top:1px solid #e8eee8;
+  color:#a0aaa2;
+  font-size:9px;
+  letter-spacing:1px;
+}
+/* Tablet layout adjustments */
+@media(max-width:850px) {
+  .layout;
+   {
+    width:min(650px,90%);
+    grid-template-columns:1fr;
+    gap:30px;
+    margin-top:42px;
+  }
+  .intro {
+    position:static;
+    padding-top:0;
+  }
+  h1 {
+    font-size:clamp(44px,9vw,62px);
+    margin-top:15px;
+  }
+  .intro-copy {
+    max-width:480px;
+  }
+  .note {
+    margin-top:22px;
+  }
+}
+/* Mobile layout adjustments */
+@media(max-width:540px) {
+  .topbar;
+   {
+    height:64px;
+    padding:0 5%;
+  }
+  .portal-tag {
+    font-size:7px;
+    letter-spacing:.5px;
+  }
+  .brand {
+    font-size:10px;
+  }
+  .layout {
+    width:92%;
+    margin:30px auto 48px;
+  }
+  .form-card {
+    padding:22px 17px;
+  }
+  h2 {
+    font-size:22px;
+  }
+  .two-col {
+    grid-template-columns:1fr;
+    gap:0;
+  }
+  footer {
+    padding:18px 5%;
+    font-size:7px;
+    gap:10px;
+  }
+}

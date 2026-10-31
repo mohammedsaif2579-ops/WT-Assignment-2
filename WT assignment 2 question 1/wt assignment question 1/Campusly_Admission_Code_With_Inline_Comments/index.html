@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campusly | Student Admission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Top navigation and admission portal label -->
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">C</span> CAMPUSLY <span class="brand-light">/ ADMISSIONS</span></a>
+    <span class="portal-tag"><i></i> APPLICATION PORTAL · 2026–27</span>
+  </header>
+
+  <!-- Main area contains the introduction and registration form -->
+  <main class="layout">
+    <!-- Introductory text shown beside the registration form -->
+    <section class="intro">
+      <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+      <h1>Make room<br>for <span>what’s next.</span></h1>
+      <p class="intro-copy">A few details. One bold first step. Create your student profile to begin your admission journey.</p>
+      <div class="note"><span>✦</span><div><strong>Thoughtfully designed.</strong><small>A simpler way to start something great.</small></div></div>
+    </section>
+
+    <!-- Registration form card -->
+    <section class="form-card">
+      <div class="card-heading">
+        <div><p class="kicker">NEW STUDENT INTAKE</p><h2>Create your profile</h2></div>
+        <span class="step">01 <small>/ 01</small></span>
+      </div>
+      <div class="progress"><span id="progress"></span></div>
+      <p class="required-note"><b>*</b> Required fields</p>
+
+      <!-- JavaScript handles validation when the user submits the form -->
+      <form id="registrationForm" novalidate>
+        <!-- Personal and academic information fields -->
+        <div class="section-title"><span>01</span><h3>Personal & academic details</h3><i></i></div>
+
+        <div class="field full">
+          <label for="name">Full name <b>*</b></label>
+          <div class="input-shell"><span>✧</span><input id="name" name="name" type="text" placeholder="e.g. Aadhya Raman" autocomplete="name" required></div>
+          <small class="error" id="nameError"></small>
+        </div>
+
+        <div class="two-col">
+          <div class="field">
+            <label for="roll">Roll number <b>*</b></label>
+            <div class="input-shell"><span>⌗</span><input id="roll" name="roll" type="text" placeholder="e.g. 26CS104" required></div>
+            <small class="error" id="rollError"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email address <b>*</b></label>
+            <div class="input-shell"><span>＠</span><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+            <small class="error" id="emailError"></small>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="course">Choose your course <b>*</b></label>
+          <div class="input-shell"><span>◇</span>
+            <select id="course" name="course" required>
+              <option value="">Select a programme</option>
+              <option>Computer Science and Engineering</option>
+              <option>Information Technology</option>
+              <option>Artificial Intelligence and Data Science</option>
+              <option>Electronics and Communication Engineering</option>
+              <option>Electrical and Electronics Engineering</option>
+              <option>Mechanical Engineering</option>
+            </select>
+          </div>
+          <small class="error" id="courseError"></small>
+        </div>
+
+        <!-- Password creation and confirmation fields -->
+        <div class="section-title"><span>02</span><h3>Account security</h3><i></i></div>
+        <div class="field full">
+          <label for="password">Create a password <b>*</b></label>
+          <div class="input-shell"><span>⌑</span><input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" required><button type="button" id="togglePassword">SHOW</button></div>
+          <div class="strength"><div class="strength-bars" id="strengthBars"><i></i><i></i><i></i><i></i></div><span id="strengthText">Password strength: not set</span></div>
+          <small class="helper">Use 8+ characters with uppercase, lowercase, a number and a symbol.</small>
+          <small class="error" id="passwordError"></small>
+        </div>
+
+        <div class="field full">
+          <label for="confirmPassword">Confirm password <b>*</b></label>
+          <div class="input-shell"><span>⌑</span><input id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter your password again" autocomplete="new-password" required></div>
+          <small class="error" id="confirmPasswordError"></small>
+        </div>
+
+        <!-- Document upload field -->
+        <div class="section-title"><span>03</span><h3>Supporting document</h3><i></i></div>
+        <div class="field full">
+          <label for="document">Upload student document <b>*</b></label>
+          <label class="upload" id="uploadBox" for="document">
+            <input id="document" name="document" type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+            <span class="upload-icon">↥</span>
+            <strong id="fileName">Drop your file here, or <em>browse</em></strong>
+            <small id="fileInfo">PDF, JPG or PNG · Maximum 5 MB</small>
+          </label>
+          <small class="error" id="documentError"></small>
+        </div>
+
+        <!-- User must confirm that the entered details are correct -->
+        <label class="declaration"><input type="checkbox" id="declaration"><span class="checkmark"></span><span>I confirm that the information provided is accurate. <b>*</b></span></label>
+        <small class="error" id="declarationError"></small>
+
+        <!-- Submit button and message area for the validation result -->
+        <button class="submit" type="submit"><span>Submit application</span><span class="arrow">↗</span></button>
+        <p class="privacy">▣ &nbsp;This demonstration validates your details in the browser only.</p>
+        <div class="success" id="successMessage" role="status" aria-live="polite" hidden></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Page footer -->
+  <footer><span>© 2026 CAMPUSLY ADMISSIONS</span><span>DESIGNED FOR THE NEXT GENERATION ✦</span></footer>
+</body>
+</html>
